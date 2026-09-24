@@ -50,20 +50,6 @@ Teachers can create and manage courses and lessons, while administrators can man
 - Review submitted courses
 - Approve or reject courses
 
-## 🛠️ Technologies
-
-- PHP
-- MySQL
-- HTML5
-- CSS3
-- JavaScript
-- XAMPP
-- phpMyAdmin
-
-## 🌐 Interface Language
-
-The platform interface is primarily in Arabic.
-
 ## 🎯 Project Purpose
 
 This project was developed for educational purposes to practice web development, database management, authentication, authorization, and content management.

@@ -1,0 +1,462 @@
+/* ============================================================
+   Aschool — Light Edition v21
+   وضع نهارى كامل فوق theme-dark.css
+   - يفعّل عبر body.theme-light (زر التبديل)
+   - يعالج المكوّنات غير المرتبطة بـ body.theme-dark فى theme-dark.css
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1) الأساسيات
+   ------------------------------------------------------------ */
+
+body.theme-light {
+  background-color: var(--bg, #f0f4f8);
+  color: var(--text, #0f1729);
+  font-family: "Segoe UI", "Tajawal", Tahoma, Arial, sans-serif;
+  font-size: 15.5px;
+  line-height: 1.8;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3,
+body.theme-light h4,
+body.theme-light h5,
+body.theme-light h6 {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text, #0f1729);
+}
+
+body.theme-light ::selection {
+  background: rgba(26, 86, 219, 0.18);
+  color: #0f1729;
+}
+
+body.theme-light ::-webkit-scrollbar-track { background: #eef2f9; }
+
+body.theme-light ::-webkit-scrollbar-thumb {
+  background: #c7d2e4;
+  border-color: #eef2f9;
+}
+
+body.theme-light ::-webkit-scrollbar-thumb:hover { background: #aebdd6; }
+
+/* ------------------------------------------------------------
+   2) القائمة الجانبية المشتركة (shell + dash)
+   ------------------------------------------------------------ */
+
+body.theme-light.shell-page .sidebar,
+body.theme-light.dash-page .sidebar {
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 55%, #f4f7fe 100%);
+  border-left: 1px solid #e4eaf5;
+  box-shadow: -14px 0 42px rgba(15, 23, 42, 0.06);
+}
+
+body.theme-light.shell-page .sidebar::before,
+body.theme-light.dash-page .sidebar::before {
+  background:
+    radial-gradient(320px 240px at 100% 0%, rgba(37, 99, 235, 0.08), transparent 70%),
+    radial-gradient(280px 220px at 0% 100%, rgba(124, 58, 237, 0.06), transparent 70%);
+}
+
+body.theme-light .side-brand { border-bottom-color: #e8eef8; }
+
+body.theme-light .brand-mark {
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+body.theme-light .side-brand-text strong {
+  background: linear-gradient(120deg, #1d4ed8, #7c3aed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.theme-light .side-brand-text small { color: #64748b; }
+
+body.theme-light .side-user {
+  background: #eef4ff;
+  border-color: #dbe7ff;
+}
+
+body.theme-light .side-avatar {
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+body.theme-light .side-user-meta strong { color: #0f1729; }
+body.theme-light .side-user-meta small { color: #64748b; }
+
+body.theme-light .sidebar a { color: #475569; }
+
+body.theme-light .sidebar a:hover {
+  background: #eef4ff;
+  border-color: #dbe7ff;
+  color: #1d4ed8;
+}
+
+body.theme-light .sidebar a.active {
+  background: linear-gradient(90deg, #dbeafe, #ede9fe);
+  border-color: #c9d9f8;
+  color: #1e3a8a;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 8px 20px rgba(37, 99, 235, 0.12);
+}
+
+body.theme-light .sidebar a.active::before {
+  background: linear-gradient(180deg, #2563eb, #7c3aed);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.45);
+}
+
+body.theme-light .sidebar .nav-ic { background: rgba(148, 163, 184, 0.12); }
+
+body.theme-light .sidebar a.active .nav-ic {
+  background: rgba(255, 255, 255, 0.85);
+  color: #1d4ed8;
+}
+
+body.theme-light .sidebar-section-title { color: #64748b; }
+
+body.theme-light .sidebar-footer {
+  color: #64748b;
+  border-top-color: #e8eef8;
+}
+
+body.theme-light .sidebar-footer strong { color: #1d4ed8; }
+
+/* ------------------------------------------------------------
+   3) الشريط العلوي والأزرار الأيقونية
+   ------------------------------------------------------------ */
+
+body.theme-light .dash-topbar,
+body.theme-light.shell-page .dash-topbar {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid #e5ebf5;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+body.theme-light .topbar-title small { color: #64748b; }
+body.theme-light .topbar-title h2 { color: #0f1729; }
+
+body.theme-light .icon-btn {
+  background: #ffffff;
+  border: 1px solid #dfe7f3;
+  color: #475569;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+body.theme-light .icon-btn:hover {
+  background: #eef4ff;
+  border-color: #a9c3f5;
+  color: #1d4ed8;
+}
+
+body.theme-light .icon-badge {
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.35);
+}
+
+body.theme-light .side-backdrop { background: rgba(15, 23, 42, 0.38); }
+
+/* ------------------------------------------------------------
+   4) لوحات التحكم (admin / teacher)
+   ------------------------------------------------------------ */
+
+body.theme-light .dash-hero {
+  border-color: #dbe7ff;
+  background:
+    radial-gradient(560px 280px at 88% 12%, rgba(124, 58, 237, 0.10), transparent 65%),
+    radial-gradient(520px 300px at 8% 100%, rgba(37, 99, 235, 0.12), transparent 68%),
+    linear-gradient(135deg, #f7faff 0%, #eef4ff 55%, #f6f1ff 100%);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.07);
+}
+
+body.theme-light .dash-hero::before {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14), transparent 70%);
+}
+
+body.theme-light .dash-hero::after {
+  background: linear-gradient(180deg, transparent, rgba(37, 99, 235, 0.12), transparent);
+}
+
+body.theme-light .hero-eyebrow {
+  background: #e8f0ff;
+  border-color: #d3e2ff;
+  color: #1d4ed8;
+}
+
+body.theme-light .dash-hero h1 { color: #0b1224; }
+body.theme-light .dash-hero p { color: #475569; }
+
+body.theme-light .kpi {
+  background: #ffffff;
+  border-color: #e4eaf5;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+body.theme-light .kpi:hover {
+  border-color: #a9c3f5;
+  box-shadow: 0 16px 38px rgba(37, 99, 235, 0.14);
+}
+
+body.theme-light .kpi::after {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.10), transparent 70%);
+}
+
+body.theme-light .kpi-icon.tint-blue   { background: #e8f0ff; border-color: #cfe0ff; color: #1d4ed8; }
+body.theme-light .kpi-icon.tint-green  { background: #e7f9f2; border-color: #c3f0df; color: #047857; }
+body.theme-light .kpi-icon.tint-amber  { background: #fef4e4; border-color: #fbe2bb; color: #b45309; }
+body.theme-light .kpi-icon.tint-red    { background: #fdecec; border-color: #f9d1d1; color: #b91c1c; }
+body.theme-light .kpi-icon.tint-violet { background: #f2ecfe; border-color: #e0d3fb; color: #6d28d9; }
+body.theme-light .kpi-icon.tint-cyan   { background: #e5f8fb; border-color: #c2eef4; color: #0e7490; }
+
+body.theme-light .kpi-label { color: #64748b; }
+body.theme-light .kpi-value { color: #0f1729; }
+body.theme-light .kpi-meta { color: #94a3b8; }
+body.theme-light .kpi-arrow { color: #94a3b8; }
+body.theme-light .kpi:hover .kpi-arrow { color: #2563eb; }
+
+body.theme-light .panel {
+  background: #ffffff;
+  border-color: #e4eaf5;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+body.theme-light .panel-head h2,
+body.theme-light .panel-head h3 { color: #0f1729; }
+body.theme-light .panel-head h2 .ic { color: #2563eb; }
+
+body.theme-light .panel-action {
+  background: #e8f0ff;
+  border-color: #d3e2ff;
+  color: #1d4ed8;
+}
+
+body.theme-light .panel-action:hover {
+  background: #dbe8ff;
+  border-color: #a9c3f5;
+  color: #1e3a8a;
+}
+
+body.theme-light .quick-link {
+  background: #f8faff;
+  border-color: #e8eef8;
+  color: #334155;
+}
+
+body.theme-light .quick-link:hover {
+  background: #eef4ff;
+  border-color: #c7d7f7;
+  color: #1d4ed8;
+}
+
+body.theme-light .quick-link .ql-ic { background: #e8f0ff; color: #1d4ed8; }
+body.theme-light .quick-link:nth-child(2n) .ql-ic { background: #f2ecfe; color: #6d28d9; }
+body.theme-light .quick-link:nth-child(3n) .ql-ic { background: #e7f9f2; color: #047857; }
+
+/* التذكيرات داخل الصفحة */
+body.theme-light .reminder-item {
+  background: #f8faff;
+  border-color: #e8eef8;
+}
+
+body.theme-light .reminder-item:hover { border-color: #c7d7f7; }
+
+body.theme-light .reminder-check { border-color: #cbd5e1; }
+body.theme-light .reminder-check:hover { border-color: #10b981; color: #047857; }
+
+body.theme-light .reminder-title { color: #1e293b; }
+body.theme-light .reminder-time { color: #64748b; }
+body.theme-light .reminder-time.is-soon { color: #b45309; }
+body.theme-light .reminder-time.is-late { color: #dc2626; }
+
+body.theme-light .reminder-del { color: #94a3b8; }
+body.theme-light .reminder-del:hover {
+  background: #fdecec;
+  border-color: #f7c6c6;
+  color: #dc2626;
+}
+
+body.theme-light .reminder-empty {
+  color: #64748b;
+  border-color: #dbe4f0;
+}
+
+body.theme-light .reminder-empty .ic { color: #94a3b8; }
+body.theme-light .reminder-empty p { color: #64748b; }
+
+body.theme-light .reminder-foot { border-top-color: #e8eef8; }
+body.theme-light .reminder-perm { color: #64748b; }
+body.theme-light .reminder-perm:hover { color: #1d4ed8; }
+
+body.theme-light .status-top { color: #64748b; }
+body.theme-light .status-top strong { color: #0f1729; }
+body.theme-light .status-track { background: #e8eef8; }
+
+body.theme-light .dash-note {
+  background: #eff6ff;
+  border-color: #dbeafe;
+  color: #475569;
+}
+
+body.theme-light .dash-note .ic { color: #2563eb; }
+body.theme-light .dash-note strong { color: #1e3a8a; }
+
+/* ------------------------------------------------------------
+   5) الأزرار العائمة والنوافذ والتنبيهات
+   ------------------------------------------------------------ */
+
+body.theme-light .fx-btn {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #dfe7f3;
+  color: #475569;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+}
+
+body.theme-light .fx-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #6d28d9);
+  border-color: rgba(147, 197, 253, 0.5);
+  color: #fff;
+}
+
+body.theme-light .fx-btn::after {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #1e293b;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+}
+
+body.theme-light .fx-btn.is-accent {
+  background: linear-gradient(135deg, #2563eb, #6d28d9);
+  border-color: rgba(147, 197, 253, 0.4);
+  color: #fff;
+}
+
+body.theme-light .fx-backdrop { background: rgba(15, 23, 42, 0.38); }
+
+body.theme-light .fx-dialog {
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  border-color: #e2e8f0;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.20);
+}
+
+body.theme-light .fx-dialog-icon {
+  background: #e8f0ff;
+  border-color: #d3e2ff;
+  color: #1d4ed8;
+}
+
+body.theme-light .fx-dialog-head h3 { color: #0f1729; }
+body.theme-light .fx-dialog-head p { color: #64748b; }
+body.theme-light .fx-close { color: #94a3b8; }
+body.theme-light .fx-close:hover {
+  background: #fdecec;
+  border-color: #f7c6c6;
+  color: #dc2626;
+}
+
+body.theme-light .fx-field label { color: #475569; }
+
+body.theme-light .fx-field input,
+body.theme-light .fx-field textarea {
+  border-color: #dbe4f0;
+  background: #ffffff;
+  color: #0f1729;
+}
+
+body.theme-light .fx-field input:focus,
+body.theme-light .fx-field textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
+}
+
+body.theme-light .fx-actions .fx-secondary {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #334155;
+}
+
+body.theme-light .fx-actions .fx-secondary:hover {
+  background: #e8f0ff;
+  color: #1d4ed8;
+}
+
+body.theme-light .focus-time {
+  background: linear-gradient(120deg, #1d4ed8, #7c3aed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.theme-light .focus-status { color: #64748b; }
+body.theme-light .focus-bar { background: #e8eef8; }
+
+body.theme-light .fx-toast {
+  background: #ffffff;
+  border-color: #dbe4f0;
+  color: #1e293b;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16);
+}
+
+body.theme-light .fx-toast.ok { border-color: #a7e8cd; color: #047857; }
+body.theme-light .fx-toast.warn { border-color: #f7d9a0; color: #b45309; }
+body.theme-light .fx-toast.err { border-color: #f7c6c6; color: #b91c1c; }
+
+body.theme-light .field-error { color: #dc2626; }
+
+body.theme-light .is-invalid,
+body.theme-light .form-control.is-invalid,
+body.theme-light input.is-invalid,
+body.theme-light select.is-invalid,
+body.theme-light textarea.is-invalid {
+  border-color: #ef4444 !important;
+  background: #fef2f2 !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.10) !important;
+}
+
+/* ------------------------------------------------------------
+   6) رابط تبديل الوضع
+   ------------------------------------------------------------ */
+
+.theme-toggle .ic,
+[data-theme-toggle] .ic { pointer-events: none; }
+
+body.theme-light .theme-toggle {
+  background: #ffffff;
+  color: #475569;
+}
+
+/* ------------------------------------------------------------
+   7) تقليل الحركة
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  body.theme-light *,
+  body.theme-light *::before,
+  body.theme-light *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* تحسين تباين أزرار الحفظ والإلغاء في الوضع النهاري (WCAG AA) */
+body.theme-light .save-button {
+  background: #047857;
+}
+
+body.theme-light .save-button:hover {
+  background: #065f46;
+}
+
+body.theme-light .cancel-button {
+  color: #55637d;
+}

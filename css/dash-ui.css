@@ -1,0 +1,1229 @@
+/* ============================================================
+   Aschool — Dashboard Experience (admin / teacher)
+   واجهات موحّدة للوحة الإدارة ولوحة المعلم — وضعان داكن وفاتح
+   ملف جديد مستقل تماماً عن CSS القديم.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1) المتغيرات — الوضع الفاتح (الافتراضي)
+   ------------------------------------------------------------ */
+
+body.dash-ui {
+  --d-surface: #ffffff;
+  --d-surface-2: #f8fafc;
+  --d-surface-3: #f1f5fb;
+  --d-border: #e5eaf3;
+  --d-border-strong: #d7e0ee;
+  --d-text: #0f1729;
+  --d-text-2: #3f4a5f;
+  --d-muted: #5b6b82;
+  --d-faint: #8494ab;
+  --d-primary: #2563eb;
+  --d-primary-2: #7c3aed;
+  --d-primary-soft: #e8f0ff;
+  --d-success: #047857;
+  --d-success-soft: #e7f9f2;
+  --d-amber: #b45309;
+  --d-amber-soft: #fef4e4;
+  --d-red: #b91c1c;
+  --d-red-soft: #fdecec;
+  --d-track: #e2e8f0;
+  --d-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+  --d-shadow-hover: 0 18px 42px rgba(37, 99, 235, 0.16);
+  --d-hero-text: #0b1224;
+  --d-hero-muted: #475569;
+  --d-hero-border: #dbe7ff;
+  --d-hero-chip: #e8f0ff;
+  --d-hero-chip-text: #1d4ed8;
+  --d-hero-bg:
+    radial-gradient(520px 260px at 88% 10%, rgba(124, 58, 237, 0.10), transparent 65%),
+    radial-gradient(480px 280px at 6% 100%, rgba(37, 99, 235, 0.12), transparent 68%),
+    linear-gradient(135deg, #f7faff 0%, #eef4ff 55%, #f6f1ff 100%);
+}
+
+/* الوضع الداكن */
+body.dash-ui.theme-dark {
+  --d-surface: #0e1628;
+  --d-surface-2: #111b30;
+  --d-surface-3: #16223a;
+  --d-border: #1f2b45;
+  --d-border-strong: #2a3a5c;
+  --d-text: #e9eefb;
+  --d-text-2: #c3cee3;
+  --d-muted: #8b9ab5;
+  --d-faint: #64748b;
+  --d-primary: #60a5fa;
+  --d-primary-2: #a78bfa;
+  --d-primary-soft: rgba(59, 130, 246, 0.14);
+  --d-success: #34d399;
+  --d-success-soft: rgba(16, 185, 129, 0.14);
+  --d-amber: #fbbf24;
+  --d-amber-soft: rgba(245, 158, 11, 0.16);
+  --d-red: #f87171;
+  --d-red-soft: rgba(239, 68, 68, 0.16);
+  --d-track: #16223a;
+  --d-shadow: 0 16px 38px rgba(0, 0, 0, 0.38);
+  --d-shadow-hover: 0 20px 48px rgba(37, 99, 235, 0.28);
+  --d-hero-text: #f4f7ff;
+  --d-hero-muted: #a9b9d6;
+  --d-hero-border: rgba(99, 102, 241, 0.26);
+  --d-hero-chip: rgba(59, 130, 246, 0.16);
+  --d-hero-chip-text: #93c5fd;
+  --d-hero-bg:
+    radial-gradient(520px 260px at 88% 10%, rgba(124, 58, 237, 0.30), transparent 65%),
+    radial-gradient(480px 280px at 6% 100%, rgba(37, 99, 235, 0.28), transparent 68%),
+    linear-gradient(135deg, #0b1528 0%, #0c1930 55%, #140f32 100%);
+}
+
+body.dash-ui .fx-dock { display: none; }
+
+body.dash-ui .content.dui-content {
+  width: auto;
+  max-width: none;
+}
+
+.dui-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body.dash-ui .content h1,
+body.dash-ui .content h2,
+body.dash-ui .content h3,
+body.dash-ui .content h4 {
+  color: var(--d-text);
+}
+
+body.dash-ui .content h1 {
+  padding-inline-start: 0;
+}
+
+body.dash-ui .content h1::before {
+  display: none;
+}
+
+body.dash-ui .content p {
+  color: var(--d-text-2);
+}
+
+/* ------------------------------------------------------------
+   2) الأزرار
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+body.dash-ui .dui-btn .ic { flex-shrink: 0; }
+
+body.dash-ui a.dui-btn-primary,
+body.dash-ui button.dui-btn-primary,
+body.dash-ui .dui-btn-primary {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+}
+
+body.dash-ui a.dui-btn-primary:hover,
+body.dash-ui button.dui-btn-primary:hover,
+body.dash-ui .dui-btn-primary:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.38);
+}
+
+body.dash-ui a.dui-btn-soft,
+body.dash-ui .dui-btn-soft {
+  background: var(--d-primary-soft);
+  color: var(--d-primary);
+  border-color: var(--d-border);
+}
+
+body.dash-ui a.dui-btn-soft:hover,
+body.dash-ui .dui-btn-soft:hover {
+  color: var(--d-primary);
+  border-color: var(--d-primary);
+  transform: translateY(-1px);
+}
+
+body.dash-ui a.dui-btn-ghost,
+body.dash-ui .dui-btn-ghost {
+  background: transparent;
+  color: var(--d-text-2);
+  border-color: var(--d-border);
+}
+
+body.dash-ui a.dui-btn-ghost:hover,
+body.dash-ui .dui-btn-ghost:hover {
+  color: var(--d-primary);
+  border-color: var(--d-primary);
+  background: var(--d-primary-soft);
+}
+
+body.dash-ui a.dui-btn-danger,
+body.dash-ui .dui-btn-danger {
+  background: var(--d-red-soft);
+  color: var(--d-red);
+  border-color: transparent;
+}
+
+body.dash-ui a.dui-btn-danger:hover,
+body.dash-ui .dui-btn-danger:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+
+body.dash-ui .dui-btn-sm {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+body.dash-ui .dui-btn:focus-visible,
+body.dash-ui .dui-chip:focus-visible,
+body.dash-ui a:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.45);
+  outline-offset: 2px;
+}
+
+/* زر تسجيل الخروج — تباين كافٍ في الوضعين */
+body.dash-ui .logout,
+body.dash-ui .navbar > a.logout {
+  background: var(--d-red-soft);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  color: var(--d-red);
+}
+
+body.dash-ui .logout:hover,
+body.dash-ui .navbar > a.logout:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+/* ------------------------------------------------------------
+   3) الهيرو
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding: 30px 32px;
+  border-radius: 24px;
+  border: 1px solid var(--d-hero-border);
+  background: var(--d-hero-bg);
+  box-shadow: var(--d-shadow);
+  margin-bottom: 20px;
+}
+
+body.dash-ui .dui-hero::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  top: -180px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+body.dash-ui .dui-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.dash-ui .dui-hero-body { max-width: 640px; }
+
+body.dash-ui .dui-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: var(--d-hero-chip);
+  border: 1px solid var(--d-hero-border);
+  color: var(--d-hero-chip-text);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+}
+
+body.dash-ui .dui-hero h1 {
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.28;
+  color: var(--d-hero-text);
+}
+
+body.dash-ui .dui-hero p {
+  margin: 0;
+  color: var(--d-hero-muted);
+  font-size: 14.5px;
+  line-height: 1.8;
+}
+
+body.dash-ui .dui-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   4) الإحصائيات
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+body.dash-ui .dui-stat {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--d-surface);
+  border: 1px solid var(--d-border);
+  box-shadow: var(--d-shadow);
+}
+
+body.dash-ui .dui-stat-ic {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--d-primary-soft);
+  color: var(--d-primary);
+  border: 1px solid var(--d-border);
+}
+
+body.dash-ui .dui-stat-ic.tint-green { background: var(--d-success-soft); color: var(--d-success); }
+body.dash-ui .dui-stat-ic.tint-amber { background: var(--d-amber-soft); color: var(--d-amber); }
+body.dash-ui .dui-stat-ic.tint-violet { background: rgba(124, 58, 237, 0.12); color: var(--d-primary-2); }
+body.dash-ui .dui-stat-ic.tint-red { background: var(--d-red-soft); color: var(--d-red); }
+
+body.dash-ui .dui-stat-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+body.dash-ui .dui-stat-body b {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--d-text);
+}
+
+body.dash-ui .dui-stat-body span {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--d-muted);
+}
+
+/* ------------------------------------------------------------
+   5) الأقسام والعناوين
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-section { margin-bottom: 30px; }
+
+body.dash-ui .dui-section-gap { margin-top: 24px; }
+
+body.dash-ui .dui-sec-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+body.dash-ui .dui-sec-head h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--d-text);
+}
+
+body.dash-ui .dui-sec-head h2 .ic { color: var(--d-primary); }
+
+body.dash-ui .dui-sec-head .dui-sec-meta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--d-muted);
+}
+
+body.dash-ui a.dui-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--d-primary);
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+body.dash-ui a.dui-link:hover { color: var(--d-primary-2); }
+
+body.dash-ui .dui-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 16px;
+  color: var(--d-muted);
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+body.dash-ui .dui-back:hover { color: var(--d-primary); }
+
+/* ------------------------------------------------------------
+   6) شرائح التصنيفات
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+body.dash-ui a.dui-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: var(--d-surface);
+  border: 1px solid var(--d-border);
+  color: var(--d-text-2);
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: var(--d-shadow);
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+body.dash-ui a.dui-chip:hover {
+  color: var(--d-primary);
+  border-color: var(--d-primary);
+  transform: translateY(-1px);
+}
+
+body.dash-ui a.dui-chip.is-active {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.30);
+}
+
+body.dash-ui a.dui-chip small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.10);
+  color: inherit;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+body.dash-ui a.dui-chip.is-active small {
+  background: rgba(255, 255, 255, 0.20);
+}
+
+/* ------------------------------------------------------------
+   7) بطاقات التصنيفات
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+}
+
+body.dash-ui .dui-cat {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--d-surface);
+  border: 1px solid var(--d-border);
+  box-shadow: var(--d-shadow);
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+}
+
+body.dash-ui .dui-cat:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.40);
+  box-shadow: var(--d-shadow-hover);
+}
+
+body.dash-ui a.dui-cat-main {
+  display: block;
+  color: inherit;
+  flex: 1;
+}
+
+body.dash-ui a.dui-cat-main:hover { color: inherit; }
+
+body.dash-ui .dui-cat-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+  padding: 18px 20px;
+  overflow: hidden;
+}
+
+body.dash-ui .dui-cat-cover::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  top: -70px;
+  left: -46px;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+body.dash-ui .dui-cat-cover .dui-cover-ic {
+  position: relative;
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+body.dash-ui .dui-cat-cover .dui-cover-letter {
+  position: relative;
+  z-index: 1;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.32);
+}
+
+body.dash-ui .dui-cat-body {
+  padding: 17px 20px 14px;
+}
+
+body.dash-ui .dui-cat-title {
+  display: block;
+  margin: 0 0 5px;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--d-text);
+}
+
+body.dash-ui .dui-cat-desc {
+  display: block;
+  margin: 0 0 12px;
+  font-size: 12.8px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--d-muted);
+  min-height: 22px;
+}
+
+body.dash-ui .dui-cat-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 11px;
+  border-top: 1px dashed var(--d-border);
+}
+
+body.dash-ui .dui-cat-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--d-muted);
+}
+
+body.dash-ui .dui-cat-meta .ic { color: var(--d-primary); }
+
+body.dash-ui .dui-cat-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 20px 16px;
+}
+
+body.dash-ui .dui-cat-foot .dui-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+body.dash-ui .dui-cat-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--d-primary);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+body.dash-ui .dui-cat:hover .dui-cat-open { color: var(--d-primary-2); }
+
+/* ------------------------------------------------------------
+   8) بطاقات الدورات
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 16px;
+}
+
+body.dash-ui .dui-course {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--d-surface);
+  border: 1px solid var(--d-border);
+  box-shadow: var(--d-shadow);
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+}
+
+body.dash-ui .dui-course:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.40);
+  box-shadow: var(--d-shadow-hover);
+}
+
+body.dash-ui .dui-course-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+  padding: 16px 20px;
+  overflow: hidden;
+}
+
+body.dash-ui .dui-course-cover::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  top: -70px;
+  left: -40px;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+body.dash-ui .dui-course-cover .dui-cover-ic {
+  position: relative;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+body.dash-ui .dui-course-cover .dui-cover-letter {
+  position: relative;
+  z-index: 1;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.30);
+}
+
+body.dash-ui .dui-course-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px 20px 14px;
+}
+
+body.dash-ui .dui-course-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+body.dash-ui .dui-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--d-muted);
+}
+
+body.dash-ui .dui-kicker .ic { color: var(--d-primary); }
+
+body.dash-ui .dui-course-title {
+  margin: 0 0 7px;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+body.dash-ui a.dui-course-link {
+  color: var(--d-text);
+  text-decoration: none;
+}
+
+body.dash-ui a.dui-course-link:hover { color: var(--d-primary); }
+
+body.dash-ui .dui-course-desc {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.75;
+  color: var(--d-muted);
+}
+
+body.dash-ui .dui-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 11px;
+  border-top: 1px dashed var(--d-border);
+}
+
+body.dash-ui .dui-meta-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--d-muted);
+}
+
+body.dash-ui .dui-meta-row .ic { color: var(--d-primary); }
+
+body.dash-ui .dui-teacher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 11px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--d-text-2);
+}
+
+body.dash-ui .dui-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.28);
+}
+
+body.dash-ui .dui-course-foot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  padding: 13px 20px 17px;
+  border-top: 1px solid var(--d-border);
+  background: var(--d-surface-2);
+}
+
+/* ------------------------------------------------------------
+   9) الشارات (الحالة)
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 900;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  background: var(--d-surface-3);
+  color: var(--d-text-2);
+}
+
+body.dash-ui .dui-badge .ic { flex-shrink: 0; }
+
+body.dash-ui .dui-badge.is-active {
+  background: var(--d-success-soft);
+  color: var(--d-success);
+  border-color: rgba(16, 185, 129, 0.26);
+}
+
+body.dash-ui .dui-badge.is-pending {
+  background: var(--d-amber-soft);
+  color: var(--d-amber);
+  border-color: rgba(245, 158, 11, 0.30);
+}
+
+body.dash-ui .dui-badge.is-draft {
+  background: var(--d-surface-3);
+  color: var(--d-muted);
+  border-color: var(--d-border);
+}
+
+body.dash-ui .dui-badge.is-rejected {
+  background: var(--d-red-soft);
+  color: var(--d-red);
+  border-color: rgba(239, 68, 68, 0.26);
+}
+
+/* ------------------------------------------------------------
+   10) ألوان التصنيفات
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-tint-5 { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+body.dash-ui .dui-tint-6 { background: linear-gradient(135deg, #0e7490, #06b6d4); }
+body.dash-ui .dui-tint-7 { background: linear-gradient(135deg, #4338ca, #8b5cf6); }
+body.dash-ui .dui-tint-8 { background: linear-gradient(135deg, #047857, #10b981); }
+body.dash-ui .dui-tint-x { background: linear-gradient(135deg, #334155, #64748b); }
+
+/* ------------------------------------------------------------
+   11) قائمة الدروس
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-lesson-block {
+  margin: 0 20px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--d-border);
+  background: var(--d-surface-2);
+  overflow: hidden;
+}
+
+body.dash-ui .dui-lesson-block.is-standalone {
+  margin: 0;
+  border-radius: 18px;
+  background: var(--d-surface);
+  box-shadow: var(--d-shadow);
+}
+
+body.dash-ui .dui-lesson-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--d-border);
+}
+
+body.dash-ui .dui-lesson-head h3,
+body.dash-ui .dui-lesson-head h4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--d-text);
+}
+
+body.dash-ui .dui-lesson-head h3 .ic,
+body.dash-ui .dui-lesson-head h4 .ic { color: var(--d-primary); }
+
+body.dash-ui .dui-lessons {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.dash-ui .dui-lesson {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 14px;
+  border-bottom: 1px dashed var(--d-border);
+}
+
+body.dash-ui .dui-lesson:last-child { border-bottom: 0; }
+
+body.dash-ui .dui-lesson-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--d-primary);
+  background: var(--d-primary-soft);
+  border: 1px solid var(--d-border);
+}
+
+body.dash-ui .dui-lesson-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.45;
+}
+
+body.dash-ui .dui-lesson-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--d-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.dash-ui .dui-lesson-meta {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--d-muted);
+}
+
+body.dash-ui .dui-lesson-tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+body.dash-ui .dui-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--d-muted);
+  background: var(--d-surface);
+  border: 1px solid var(--d-border);
+}
+
+body.dash-ui .dui-lesson-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+body.dash-ui .dui-lesson-empty {
+  padding: 16px 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--d-muted);
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   12) بطاقة دورة عريضة (صفحة التصنيف)
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-course-wide {
+  border-radius: 22px;
+  margin-bottom: 16px;
+}
+
+body.dash-ui .dui-course-wide:hover { transform: none; }
+
+body.dash-ui .dui-course-wide .dui-course-cover {
+  height: 8px;
+  padding: 0;
+}
+
+body.dash-ui .dui-course-wide .dui-course-cover::after,
+body.dash-ui .dui-course-wide .dui-cover-ic,
+body.dash-ui .dui-course-wide .dui-cover-letter { display: none; }
+
+body.dash-ui .dui-wide-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 20px 22px 4px;
+}
+
+body.dash-ui .dui-wide-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+}
+
+body.dash-ui .dui-wide-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.24);
+}
+
+body.dash-ui .dui-wide-title {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--d-text);
+}
+
+body.dash-ui .dui-wide-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+body.dash-ui .dui-wide-desc {
+  margin: 0;
+  padding: 10px 22px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--d-muted);
+}
+
+body.dash-ui .dui-wide-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 0 22px 16px;
+}
+
+body.dash-ui .dui-wide-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--d-muted);
+}
+
+body.dash-ui .dui-wide-meta .ic { color: var(--d-primary); }
+
+/* ------------------------------------------------------------
+   13) الحالة الفارغة
+   ------------------------------------------------------------ */
+
+body.dash-ui .dui-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 46px 24px;
+  border-radius: 22px;
+  background: var(--d-surface);
+  border: 1px dashed var(--d-border-strong);
+  box-shadow: var(--d-shadow);
+}
+
+body.dash-ui .dui-empty-ic {
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--d-primary);
+  background: var(--d-primary-soft);
+  border: 1px solid var(--d-border);
+  margin-bottom: 4px;
+}
+
+body.dash-ui .dui-empty h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--d-text);
+}
+
+body.dash-ui .dui-empty p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--d-muted);
+}
+
+/* ------------------------------------------------------------
+   14) لوحة المعلم (dash-page)
+   ------------------------------------------------------------ */
+
+body.dash-ui.dash-page .content.dash-content {
+  padding-top: 30px;
+}
+
+body.dash-ui .dui-panel-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px 16px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: var(--d-primary-soft);
+  border: 1px solid var(--d-border);
+  color: var(--d-text-2);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+body.dash-ui .dui-panel-note .ic {
+  color: var(--d-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ------------------------------------------------------------
+   15) الاستجابة
+   ------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  body.dash-ui .dui-hero {
+    padding: 24px 22px;
+  }
+
+  body.dash-ui .dui-hero h1 { font-size: 25px; }
+
+  body.dash-ui .dui-stats {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  body.dash-ui .dui-wide-head { padding: 18px 18px 4px; }
+  body.dash-ui .dui-wide-desc { padding: 8px 18px 14px; }
+  body.dash-ui .dui-wide-meta { padding: 0 18px 14px; }
+  body.dash-ui .dui-lesson-block { margin: 0 16px 16px; }
+  body.dash-ui .dui-course-foot { padding: 12px 16px 15px; }
+}
+
+@media (max-width: 620px) {
+  body.dash-ui .dui-hero {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  body.dash-ui .dui-hero h1 { font-size: 23px; }
+
+  body.dash-ui .dui-hero-actions,
+  body.dash-ui .dui-hero-actions .dui-btn {
+    width: 100%;
+  }
+
+  body.dash-ui .dui-hero-actions .dui-btn { justify-content: center; }
+
+  body.dash-ui .dui-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  body.dash-ui .dui-stat { padding: 13px 12px; gap: 10px; }
+  body.dash-ui .dui-stat-ic { width: 38px; height: 38px; border-radius: 11px; }
+  body.dash-ui .dui-stat-body b { font-size: 18px; }
+
+  body.dash-ui .dui-cat-grid,
+  body.dash-ui .dui-course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.dash-ui .dui-lesson {
+    flex-wrap: wrap;
+  }
+
+  body.dash-ui .dui-lesson-tags { margin-inline-start: 39px; }
+
+  body.dash-ui .dui-lesson-actions {
+    width: 100%;
+    margin-inline-start: 39px;
+  }
+
+  body.dash-ui .dui-course-foot .dui-btn { flex: 1; }
+}
+
+/* ------------------------------------------------------------
+   16) تقليل الحركة
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  body.dash-ui *,
+  body.dash-ui *::before,
+  body.dash-ui *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
